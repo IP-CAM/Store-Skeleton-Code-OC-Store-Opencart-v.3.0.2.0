@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+
+    app-apache:
+        build:
+            context: ./app/docker
+            dockerfile: develop/apache/Dockerfile
+        container_name: app-apache
+        volumes:
+            - ./app:/app
+            - ./app/docker/develop/apache/log:/var/log/apache2
+        environment:
+            - SITE_DOMAIN=${SITE_DOMAIN}
+        ports:
+            - ${DOCKER_APACHE_PORT}:80
+        depends_on:
+            - app-php
+
+    app-php:
+        build:
+            context: ./app/docker
+            dockerfile: develop/php/Dockerfile
+        container_name: app-php
+        volumes:
+            - ./app:/app
+        depends_on:
+            - app-mysql
+
+    app-mysql:
+        build:
+            context: ./app/docker
+            dockerfile: develop/mysql/Dockerfile
+        container_name: app-mysql
+        volumes:
+            - ./app/docker/develop/mysql/schema:/var/lib/mysql
+            - ./app/docker/develop/mysql/database:/data/enterpoint
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USERNAME}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - ${DOCKER_MYSQL_PORT}:3306
+
+    app-phpmyadmin:
+        build:
+            context: ./app/docker
+            dockerfile: develop/phpmyadmin/Dockerfile
+        container_name: app-phpmyadmin
+        environment:
+            UPLOAD_LIMIT: 500M
+            PMA_HOST: app-mysql
+        ports:
+            - ${DOCKER_PHPMYADMIN_PORT}:80
+        depends_on:
+            - app-mysql
+
+    app-node:
+        build:
+            context: app/docker
+            dockerfile: develop/node/Dockerfile
+        container_name: app-node
+        volumes:
+            - ./app:/app
+        working_dir: /app/assets
+
+    app-node-watch:
+        build:
+            context: app/docker
+            dockerfile: develop/node/Dockerfile
+        container_name: app-node-watch
+        volumes:
+            - ./app:/app
+        working_dir: /app/assets
+        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm run watch"
+
+    app-node-start:
+        build:
+            context: app/docker
+            dockerfile: develop/node-start/Dockerfile
+        container_name: app-node-start
+        ports:
+            - 8080:8080
+        volumes:
+            - ./app:/app
+        working_dir: /app/assets
+        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm run start"

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<%= _.template(require('./../includes/head.html').default)() %>
+
+    <body>
+        <%= _.template(require('./../includes/header.html').default)() %>
+
+            <main class="main">
+                <img src="https://www.tesla.com/ns_videos/commerce/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1036392-10-C_0.jpg" alt="">
+                <img src="https://www.tesla.com/ns_videos/commerce/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1036392-10-C_alt.jpg" alt="">
+                <div class="content">
+                    <h1>CHAdeMO Adapter</h1>
+                    <button class="js-open-modal">TO ORDER</button>
+                    <h2>CHAdeMO Adapter</h2>
+                    <h3>CHAdeMO Adapter</h3>
+                    <p> Enjoy the most charging options of any EV owner on the road with the CHAdeMO adapter. </p>
+                    <p>
+                        Compatible with third-party DC fast charging networks such as
+                        Electrify America and EVgo, the CHAdeMO adapter supports charging speeds
+                        up to 50kW and works with all Tesla vehicles (2019.24.1 firmware or later is required for Model 3 compatibility).
+                    </p>
+                    <p>
+                        Note: Tesla does not regulate pricing or charging experience at third-party charging stations.
+                    </p>
+                    <p>
+                        Network membership is typically required at third-party
+                        CHAdeMO stations. For more details on non-Tesla charging practices, please consult third-party EVSEs directly.
+                    </p>
+                    <p>
+                        Compatible with Model S, Model 3, Model X and Model Y.
+                    </p>
+                    <p>
+                        Includes:
+                    </p>
+
+                    <ul>
+                        <li>1x CHAdeMO adapter</li>
+                        <li>1x CHAdeMO adapter</li>
+                        <li>1x CHAdeMO adapter</li>
+                        <li>1x CHAdeMO adapter</li>
+                        <li>1x CHAdeMO adapter</li>
+                    </ul>
+                </div>
+            </main>
+
+            
+            <div class="form-wrap">
+                <form action="#" class="form">
+                    <div class="form-row">
+                        <div class="form-control">
+                            <input type="text" class="input input-lg" placeholder="Name">
+                            <span class="error">Тупий бекендщик.</span>
+                        </div>
+                        <div class="form-control">
+                            <input type="text" class="input input-lg" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-control">
+                            <input type="text" class="input input-md" placeholder="Name">
+                        </div>
+                        <div class="form-control">
+                            <input type="text" class="input input-md" placeholder="Name">
+                        </div>
+    
+                        <div class="form-control">
+                            <button type="submin" class="btn input-md">ORDER</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <%= _.template(require('./../includes/scripts.html').default)() %>
+    </body>
+
+</html>
