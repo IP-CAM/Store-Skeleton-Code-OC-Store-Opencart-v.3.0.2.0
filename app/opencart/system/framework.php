@@ -38,15 +38,11 @@ set_error_handler(function($code, $message, $file, $line) use($log, $config) {
 			break;
 	}
 
-	if ($config->get('error_display')) {
-		echo '<b>' . $error . '</b>: ' . $message . ' in <b>' . $file . '</b> on line <b>' . $line . '</b>';
-	}
-
 	if ($config->get('error_log')) {
 		$log->write('PHP ' . $error . ':  ' . $message . ' in ' . $file . ' on line ' . $line);
 	}
 
-	return true;
+	return !env('DEBUG', false);
 });
 
 // Event

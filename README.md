@@ -1,4 +1,4 @@
-# OpenCart Store
+# OpenCart Store Skeleton
 
 1. Install [docker](https://docs.docker.com/engine/install/ubuntu/).
 2. Install [docker-compose](https://docs.docker.com/compose/install/).

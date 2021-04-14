@@ -8,7 +8,7 @@ include __DIR__ . '/../../helpers.php';
 Dotenv::load(__DIR__ . '/../../');
 
 // Configuration
-require_once('config.php');
+require_once(__DIR__ . '/../config/admin.php');
 
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
