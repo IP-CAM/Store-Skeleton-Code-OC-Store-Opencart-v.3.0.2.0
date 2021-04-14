@@ -12,8 +12,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
-
 COPY ./develop/php/config/php.ini /usr/local/etc/php/php.ini
 COPY ./develop/php/entrypoint.sh /usr/local/bin/docker-php-entrypoint
 
