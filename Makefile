@@ -76,6 +76,9 @@ app-assets-install:
 app-assets-watch:
 	docker-compose -f docker-compose.yml run --rm app-node npm run watch
 
+app-assets-listen:
+	docker-compose -f docker-compose.yml up app-node-watch
+
 app-assets-prod:
 	docker-compose -f docker-compose.yml run --rm app-node npm run build
 

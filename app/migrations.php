@@ -11,7 +11,7 @@ return [
 
     'migrations_paths' => [
         'App\Migrations' => __DIR__ . '/src/Migrations',
-        'App\Infrastructure\Migrations' => './src/Infrastructure/Migrations',
+        'App\Infrastructure\Migrations' => './src/Infrastructure/Migration',
     ],
 
     'all_or_nothing' => true,

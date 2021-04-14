@@ -4,7 +4,7 @@ class ControllerMarketplaceExtension extends Controller {
 
 	public function index() {
 		$this->load->language('marketplace/extension');
-        1/0;
+
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$data['breadcrumbs'] = array();

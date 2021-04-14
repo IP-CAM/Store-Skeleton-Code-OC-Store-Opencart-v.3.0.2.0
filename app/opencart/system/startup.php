@@ -1,7 +1,10 @@
 <?php
 
 if (env('DEBUG', false) === true) {
-    \Symfony\Component\ErrorHandler\Debug::enable();
+    umask(0000);
+
+    \Symfony\Component\ErrorHandler\Debug::enable()
+        ->setDefaultLogger(new \App\Infrastructure\Logger\OpencartLogger(env('ERROR_FILE', 'error.log')));
 }
 
 if (!ini_get('date.timezone')) {
