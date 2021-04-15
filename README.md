@@ -41,7 +41,8 @@ make app-migrate-rollback v={version migration} - Rollback to migrate by version
 ---
 ## Admins
 ```
-| email                    |   login   |  password  |
+|          email           |   login   |  password  |
 |--------------------------|-----------|------------|
+|  root@root.root          |   root    |   secret   |
 |  admin@admin.admin       |   admin   |   secret   |
 |                          |           |            |
