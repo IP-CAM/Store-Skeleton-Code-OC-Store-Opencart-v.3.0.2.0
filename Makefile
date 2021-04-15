@@ -28,7 +28,7 @@ docker-down-clear:
 
 set-permission:
 	docker-compose -f docker-compose.yml exec app-php chmod -R 777 storage
-	docker-compose -f docker-compose.yml exec app-php chmod -R 666 opencart/image
+	docker-compose -f docker-compose.yml exec app-php chmod -R 777 opencart/image
 	docker run --rm -v ${PWD}/app:/app alpine chmod -R 777 /app/docker
 
 app-clear:
