@@ -61,6 +61,9 @@ app-migrate-rollback:
 app-composer-install:
 	docker-compose -f docker-compose.yml exec app-php composer install
 
+app-composer-update:
+	docker-compose -f docker-compose.yml exec app-php composer update
+
 app-composer-dump-autoload:
 	docker-compose -f docker-compose.yml exec app-php composer dump-autoload
 
