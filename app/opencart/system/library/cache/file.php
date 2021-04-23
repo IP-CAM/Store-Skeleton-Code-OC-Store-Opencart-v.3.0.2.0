@@ -22,6 +22,10 @@ class File {
 	}
 
 	public function get($key) {
+	    if (env('DEBUG', false) === true) {
+	        return false;
+        }
+
 		$files = glob(DIR_CACHE . 'cache.' . preg_replace('/[^A-Z0-9\._-]/i', '', $key) . '.*');
 
 		if ($files) {

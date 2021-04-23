@@ -22,12 +22,19 @@ final class Twig {
 		// initialize Twig environment
 		$config = array('autoescape' => false);
 
-		if ($cache) {
+		if ($cache && env('DEBUG', false) === false) {
 			$config['cache'] = DIR_CACHE;
 		}
 
 		$this->twig = new \Twig_Environment($loader, $config);
-		
+
+		if (env('DEBUG', false) === true) {
+            $this->twig->addFunction(new \Twig_SimpleFunction('dd', static fn (...$vars) => dd(...$vars)));
+            $this->twig->addFunction(new \Twig_SimpleFunction('dump', static function (...$vars) {
+                dump(...$vars);
+            }));
+        }
+
 		try {
 			// load template
 			$template = $this->twig->loadTemplate($template . '.twig');
